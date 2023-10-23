@@ -5,7 +5,6 @@ import java.util.Collection;
 public interface NodeInterface {
 
 
-
     /**
      * @return the name of the node
      */
@@ -25,7 +24,6 @@ public interface NodeInterface {
      */
     void setId(int id);
 
-    //
 
     /**
      * Node consists of set of neighbors. It returns the corresponding neighbor given the name of the neighbor.
@@ -76,7 +74,7 @@ public interface NodeInterface {
      * It returns the successor of the node. The successor is the first neighbor that's added to it. Neighbors are
      * ordered based on the order in which they have connected with this node.
      *
-     * @return nighbor node object
+     * @return neighbor node object
      */
     NodeInterface getSuccessor();
 

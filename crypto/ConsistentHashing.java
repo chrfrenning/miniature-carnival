@@ -6,7 +6,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * The consisten hash function assigns m-bit hash value to data.
+ * The consistent hash function assigns m-bit hash value to data.
  *
  * A hash ring is constructed with the value from 0 to 2^m. Whenever a data item needs a hash value
  * the hash function assigns the data to one point in the hash ring (eg:- each data item would be assigned to the
@@ -63,14 +63,11 @@ public class ConsistentHashing {
     }
 
 
-
     public static void test(){
         ConsistentHashing ch = new ConsistentHashing(5);
-        String nodes[] ={"node 1", "node 2", "node 3", "node 4", "node 5", "node 6"};
+        String[] nodes ={"node 1", "node 2", "node 3", "node 4", "node 5", "node 6"};
         for(int i=0; i< nodes.length; i++)
             System.out.println( ch.hash(nodes[i]));
 
     }
-
-
 }

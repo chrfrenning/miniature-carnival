@@ -20,7 +20,6 @@ public class Network implements NetworkInterface{
         this.network = new LinkedHashMap<String, NodeInterface>();
     }
 
-
     public LinkedHashMap<String, NodeInterface> getTopology(){
         return this.network;
     }
@@ -66,8 +65,6 @@ public class Network implements NetworkInterface{
         }
         return network;
     }
-
-
 
     public int getSize(){
         return this.network.size();

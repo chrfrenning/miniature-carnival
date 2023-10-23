@@ -8,7 +8,7 @@ import p2p.NetworkInterface;
 import java.util.*;
 
 /**
- * This class implements the chord protocol. The protocol is tested using the custom built simulator.
+ * This class implements the chord protocol. The protocol is tested using the custom-built simulator.
  */
 public class ChordProtocol implements Protocol{
 
@@ -18,7 +18,7 @@ public class ChordProtocol implements Protocol{
     // network object
     public NetworkInterface network;
 
-    // consisent hasing object
+    // consistent hasing object
     public ConsistentHashing ch;
 
     // key indexes. tuples of (<key name>, <key index>)
@@ -75,7 +75,7 @@ public class ChordProtocol implements Protocol{
 
 
     /**
-     * This method builds the overlay network.  It assumes the network object has already been set. It generates indexes
+     * This method builds the overlay network. It assumes the network object has already been set. It generates indexes
      *     for all the nodes in the network. Based on the indexes it constructs the ring and places nodes on the ring.
      *         algorithm:
      *           1) for each node:
@@ -85,7 +85,7 @@ public class ChordProtocol implements Protocol{
     public void buildOverlayNetwork(){
 
         /*
-        implement this logic
+        TODO implement this logic
          */
 
     }
@@ -108,7 +108,7 @@ public class ChordProtocol implements Protocol{
      */
     public void buildFingerTable() {
         /*
-        implement this logic
+        TODO implement this logic
          */
 
     }
@@ -119,14 +119,14 @@ public class ChordProtocol implements Protocol{
      * This method performs the lookup operation.
      *  Given the key index, it starts with one of the node in the network and follows through the finger table.
      *  The correct successors would be identified and the request would be checked in their finger tables successively.
-     *   Finally the request will reach the node that contains the data item.
+     *  Finally, the request will reach the node that contains the data item.
      *
      * @param keyIndex index of the key
      * @return names of nodes that have been searched and the final node that contains the key
      */
     public LookUpResponse lookUp(int keyIndex){
         /*
-        implement this logic
+        TODO implement this logic
          */
         return null;
     }

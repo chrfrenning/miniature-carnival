@@ -9,7 +9,7 @@ public interface NetworkInterface {
     /**
      *  returns the network object that consists of all the nodes
      *
-     * @return set of nodes (node name, node object)
+     * @return a set of nodes (node name, node object)
      */
     LinkedHashMap<String, NodeInterface> getTopology();
 
@@ -43,6 +43,4 @@ public interface NetworkInterface {
      * @return number of nodes
      */
     int getSize();
-
-
 }
