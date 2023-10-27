@@ -4,6 +4,10 @@ package crypto;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * The consistent hash function assigns m-bit hash value to data.
@@ -42,7 +46,7 @@ public class ConsistentHashing {
 
         MessageDigest md = null;
         try {
-            md = MessageDigest.getInstance("SHA-512");
+            md = MessageDigest.getInstance("MD5");
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
@@ -63,11 +67,33 @@ public class ConsistentHashing {
     }
 
 
-    public static void test(){
-        ConsistentHashing ch = new ConsistentHashing(5);
-        String[] nodes ={"node 1", "node 2", "node 3", "node 4", "node 5", "node 6"};
+
+    public static void test1(){
+        ConsistentHashing ch = new ConsistentHashing(3);
+        String nodes[] ={"Node 1", "Node 2", "Node 3", "Node 4"};
         for(int i=0; i< nodes.length; i++)
             System.out.println( ch.hash(nodes[i]));
 
     }
+
+    public static void test2(){
+        ConsistentHashing ch = new ConsistentHashing(20);
+        int length = 1000;
+        String nodes[] = new String[length];
+        Set<Integer> set = new HashSet<Integer>();
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        for(int i=0; i<length;i++){
+            nodes[i] = "Node "+(i+1);
+        }
+        for(int i=0; i< length; i++) {
+            res.add(ch.hash(nodes[i]));
+            set.add(ch.hash(nodes[i]));
+        }
+        Collections.sort(res);
+        System.out.println(res);
+        System.out.println(set.size());
+    }
+
+
+
 }

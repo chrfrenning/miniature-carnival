@@ -85,11 +85,112 @@ public class ChordProtocol implements Protocol{
     public void buildOverlayNetwork(){
 
         /*
-        TODO implement this logic
+        implement this logic
          */
-
+        
+        for (Map.Entry<String, NodeInterface> mapElement : 
+             getNetwork().getTopology().entrySet()) { 
+  
+            String key = mapElement.getKey(); 
+  
+            // Finding the value 
+            // using getValue() method 
+            NodeInterface value = mapElement.getValue(); 
+  
+            getNetwork().getNode(key).setId(ch.hash(key));
+        } 
+        
+        
+        
+        String[] resultingNeighbour = new String[2];
+        for (Map.Entry<String, NodeInterface> mapElement : 
+             getNetwork().getTopology().entrySet()) { 
+  
+            String key = mapElement.getKey(); 
+  
+            // Finding the value 
+            // using getValue() method 
+            NodeInterface value = mapElement.getValue(); 
+  
+           int findNearest = getNetwork().getNode(key).getId();
+           resultingNeighbour = getNearestNodetoAddNeighbour(findNearest);
+            System.out.println(key+ "is with index " + findNearest + " have neighbour values with node name"+ resultingNeighbour[0]+" node value"+ resultingNeighbour[1]);
+            getNetwork().getNode(key).addNeighbor(resultingNeighbour[0],getNetwork().getNode(resultingNeighbour[0]));
+        }
+        
+       
+        
+        
+        System.out.println(""+getNetwork().getTopology());
+        getNetwork().printTopology();
+        
+      
     }
 
+
+
+    public String[] getNearestNodetoAddNeighbour(int findnearest) {
+        
+        int[] arrayOfNetworkIndexes = new int[network.getSize()];
+        int i = 0;
+         Map<String, String> dictionary = new HashMap<>();
+        
+        for (Map.Entry<String, NodeInterface> mapElement : 
+             getNetwork().getTopology().entrySet()) { 
+             String key = mapElement.getKey(); 
+  
+            // Finding the value 
+            // using getValue() method 
+            NodeInterface value = mapElement.getValue(); 
+            
+           
+            arrayOfNetworkIndexes[i]= getNetwork().getNode(key).getId();
+            dictionary.put(String.valueOf(arrayOfNetworkIndexes[i]), key);
+            i++;
+        }
+        String nearestInt = String.valueOf(findNextGreaterOrEqualInteger(arrayOfNetworkIndexes, findnearest));
+        
+        System.out.println("value "+ findnearest + "have nearest int of "+ nearestInt);
+        
+        String nearestNodeName = dictionary.get(String.valueOf(nearestInt));
+        
+        
+        int maxIndex = Arrays.stream(arrayOfNetworkIndexes).max().getAsInt();
+        int minIndex = Arrays.stream(arrayOfNetworkIndexes).min().getAsInt();
+       
+        String[] result = new String[2];
+        
+        if(findnearest != maxIndex ){
+            result[0] = nearestNodeName;
+            result[1] = nearestInt;
+        return result;
+        }else  {
+            nearestNodeName = dictionary.get(String.valueOf(minIndex));
+            result[0] = nearestNodeName;
+            result[1] = String.valueOf(minIndex);
+        return result;
+        }
+        
+        
+    }  
+
+    public static int findNextGreaterOrEqualInteger(int[] array, int target) {
+        int nextInteger = Integer.MAX_VALUE; // Initialize with a large value
+
+        for (int value : array) {
+            if (value > target && value < nextInteger) {
+                nextInteger = value;
+            }
+        }
+
+        if (nextInteger == Integer.MAX_VALUE) {
+            // No greater or equal integer found in the array
+            return -1; // You can choose an appropriate value or throw an exception here
+        }
+
+        return nextInteger;
+    }
+    
 
 
 
