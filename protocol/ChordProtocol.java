@@ -3,6 +3,7 @@ package protocol;
 
 import crypto.ConsistentHashing;
 import p2p.NetworkInterface;
+import p2p.NodeInterface;
 
 
 import java.util.*;
@@ -88,7 +89,7 @@ public class ChordProtocol implements Protocol{
         implement this logic
          */
         
-        for (Map.Entry<String, NodeInterface> mapElement : 
+        for (Map.Entry<String, NodeInterface> mapElement :
              getNetwork().getTopology().entrySet()) { 
   
             String key = mapElement.getKey(); 

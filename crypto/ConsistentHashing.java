@@ -46,7 +46,7 @@ public class ConsistentHashing {
 
         MessageDigest md = null;
         try {
-            md = MessageDigest.getInstance("MD5");
+            md = MessageDigest.getInstance("SHA-512"); // MD5
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }

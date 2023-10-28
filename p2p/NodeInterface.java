@@ -5,6 +5,7 @@ import java.util.Collection;
 public interface NodeInterface {
 
 
+
     /**
      * @return the name of the node
      */
@@ -23,7 +24,6 @@ public interface NodeInterface {
      * @param id node id
      */
     void setId(int id);
-
 
     /**
      * Node consists of set of neighbors. It returns the corresponding neighbor given the name of the neighbor.

@@ -135,7 +135,7 @@ public class ChordProtocolSimulator {
         List<Integer> sortedIndexes = new ArrayList<Integer>();
         int peerIndex = -1;
 
-        // calculate the indexes of all the nodes using consistent hasing
+        // calculate the indexes of all the nodes using consistent hashing
         for(Map.Entry<String, NodeInterface> node: this.network.getTopology().entrySet()) {
             String nodeName = node.getValue().getName();
             int nodeIndex = consistentHash.hash(nodeName);
@@ -323,11 +323,11 @@ public class ChordProtocolSimulator {
         buildProtocol();
 
 
-//        printRing();
-//        printNetwork();
+        printRing();
+        printNetwork();
 
         // tests the lookup operation
-//        testLookUp();
+        testLookUp();
     }
 
 }
