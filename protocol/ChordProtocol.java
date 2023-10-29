@@ -7,6 +7,7 @@ import p2p.NodeInterface;
 
 
 import java.util.*;
+import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 
 /**
@@ -44,7 +45,7 @@ public class ChordProtocol implements Protocol{
         this.ch = new ConsistentHashing(this.m);
     }
 
-  
+
 
     /**
      * sets the network
@@ -86,36 +87,36 @@ public class ChordProtocol implements Protocol{
      *           2)     find neighbor based on consistent hash (neighbor should be next to the current node in the ring)
      *           3)     add neighbor to the peer (uses Peer.addNeighbor() method)
      */
-    public void buildOverlayNetwork(){
+    public void buildOverlayNetwork_asfar(){
 
         /*
         implement this logic
          */
-        
+
         for (Map.Entry<String, NodeInterface> mapElement :
-             getNetwork().getTopology().entrySet()) { 
-  
-            String key = mapElement.getKey(); 
-  
-            // Finding the value 
-            // using getValue() method 
-            NodeInterface value = mapElement.getValue(); 
-  
+             getNetwork().getTopology().entrySet()) {
+
+            String key = mapElement.getKey();
+
+            // Finding the value
+            // using getValue() method
+            NodeInterface value = mapElement.getValue();
+
             getNetwork().getNode(key).setId(ch.hash(key));
-        } 
-        
-        
-        
+        }
+
+
+
         String[] resultingNeighbour = new String[2];
-        for (Map.Entry<String, NodeInterface> mapElement : 
-             getNetwork().getTopology().entrySet()) { 
-  
-            String key = mapElement.getKey(); 
-  
-            // Finding the value 
-            // using getValue() method 
-            NodeInterface value = mapElement.getValue(); 
-  
+        for (Map.Entry<String, NodeInterface> mapElement :
+             getNetwork().getTopology().entrySet()) {
+
+            String key = mapElement.getKey();
+
+            // Finding the value
+            // using getValue() method
+            NodeInterface value = mapElement.getValue();
+
            int findNearest = getNetwork().getNode(key).getId();
            resultingNeighbour = getNearestNodetoAddNeighbour(findNearest);
             System.out.println(key+ " is with index " + findNearest + " have neighbour values with node name "+ resultingNeighbour[0]+" node value"+ resultingNeighbour[1]);
@@ -127,36 +128,36 @@ public class ChordProtocol implements Protocol{
 
 
     public String[] getNearestNodetoAddNeighbour(int findnearest) {
-        
+
         int[] arrayOfNetworkIndexes = new int[network.getSize()];
         int i = 0;
          Map<String, String> dictionary = new HashMap<>();
-        
-        for (Map.Entry<String, NodeInterface> mapElement : 
-             getNetwork().getTopology().entrySet()) { 
-             String key = mapElement.getKey(); 
-  
-            // Finding the value 
-            // using getValue() method 
-            NodeInterface value = mapElement.getValue(); 
-            
-           
+
+        for (Map.Entry<String, NodeInterface> mapElement :
+             getNetwork().getTopology().entrySet()) {
+             String key = mapElement.getKey();
+
+            // Finding the value
+            // using getValue() method
+            NodeInterface value = mapElement.getValue();
+
+
             arrayOfNetworkIndexes[i]= getNetwork().getNode(key).getId();
             dictionary.put(String.valueOf(arrayOfNetworkIndexes[i]), key);
             i++;
         }
         String nearestInt = String.valueOf(findNextGreaterOrEqualInteger(arrayOfNetworkIndexes, findnearest));
-        
+
         System.out.println("value "+ findnearest + "have nearest int of "+ nearestInt);
-        
+
         String nearestNodeName = dictionary.get(String.valueOf(nearestInt));
-        
-        
+
+
         int maxIndex = Arrays.stream(arrayOfNetworkIndexes).max().getAsInt();
         int minIndex = Arrays.stream(arrayOfNetworkIndexes).min().getAsInt();
-       
+
         String[] result = new String[2];
-        
+
         if(findnearest != maxIndex ){
             result[0] = nearestNodeName;
             result[1] = nearestInt;
@@ -167,9 +168,9 @@ public class ChordProtocol implements Protocol{
             result[1] = String.valueOf(minIndex);
         return result;
         }
-        
-        
-    }  
+
+
+    }
 
     public static int findNextGreaterOrEqualInteger(int[] array, int target) {
         int nextInteger = Integer.MAX_VALUE; // Initialize with a large value
@@ -187,9 +188,47 @@ public class ChordProtocol implements Protocol{
 
         return nextInteger;
     }
-    
 
 
+    public void buildOverlayNetwork() {
+        /*
+        TODO implement this logic
+         */
+        HashMap<Integer, NodeInterface> nodeIndexes = new HashMap<>();
+
+        // assign index to each node and put in a local map indexed by index
+        for (Map.Entry<String, NodeInterface> node : getNetwork().getTopology().entrySet()) {
+            int index = ch.hash(node.getKey());
+            // If the index is already assigned to a node
+            // slide to the next available index.
+            while (nodeIndexes.containsKey(index)) index++;
+            node.getValue().setId(index);
+            nodeIndexes.put(index, node.getValue());
+        }
+
+        // sort local map
+        sorted = nodeIndexes.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                        (e1, e2) -> e1, LinkedHashMap::new));
+
+        // assign next neighbour to the previous one
+        NodeInterface prev = null;
+        NodeInterface first = null;
+
+        for (NodeInterface node : sorted.values()) {
+            if (prev != null) {
+                prev.addNeighbor(node.getName(), node);
+            } else {
+                first = node;
+            }
+            prev = node;
+        }
+
+        // assign the first one to the last one -- to make a ring
+        assert prev != null;
+        prev.addNeighbor(first.getName(), first);
+    }
 
 
 
@@ -215,35 +254,42 @@ public class ChordProtocol implements Protocol{
                         (e1, e2) -> e1, LinkedHashMap::new));
 
         int max = (int) Math.pow(2, m);
+        System.out.println("--------------------------------------------");
         System.out.println("Calculate " + m + " fingers to each node in a ring of " + max);
+        System.out.println("--------------------------------------------");
 
         for(Map.Entry<Integer, NodeInterface> node : sorted.entrySet()) {
-            System.out.println("Calculate " + m + " fingers to " + node.getValue().getName()
-                    + " index:" + node.getValue().getId());
+            System.out.println("Calculate " + m + " fingers to "+ node.getValue().getId() +"_(" + node.getValue().getName() + ")");
             LinkedHashMap<Integer, NodeInterface> fingerTable = new LinkedHashMap<>();
             for(int finger = 1; finger <= m; finger++) {
                 int start = (node.getValue().getId() + (int) Math.pow(2, finger -1)) % max;
                 int stop = ((node.getValue().getId() + (int) Math.pow(2, finger)) -1) % max;
                 NodeInterface contact = findEntryEqualOrBigger(start);
                 if (contact != null) {
-                    System.out.println("FINGER #" + finger
-                            + " range " + start + "-" + stop
-                            + " points to " + contact.getName()
-                            + " index:" + contact.getId());
+                    System.out.println("\tFINGER #" + finger
+                            + " range " + Integer.toBinaryString(start) + "-" + Integer.toBinaryString(stop)
+                            + " points to "+contact.getId() +"_(" + contact.getName() + ")");
                 } else {
-                    System.out.println("null");
+                    System.out.println(" ERROR: Not found!");
                 }
                 fingerTable.put(start, contact);
             }
             node.getValue().setRoutingTable(fingerTable);
         }
+        //printRoutingTables();
     }
 
     private NodeInterface findEntryEqualOrBigger(int start) {
+
+        if (sorted.containsKey(start)) return sorted.get(start);
+
+        System.out.print("\t\t...Searching closest to " + start + ". Trying... ");
         for (Map.Entry<Integer, NodeInterface> entry : sorted.entrySet()) {
             if (entry.getKey() >= start) {
+                System.out.println(" Found: " + entry.getKey());
                 return entry.getValue();
             }
+            System.out.print(" " + entry.getKey());
         }
         return null; // No entry found
     }

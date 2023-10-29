@@ -41,14 +41,13 @@ public class Network implements NetworkInterface{
 
 
     public void printTopology(){
-        System.out.println("..............Printing network topology..............");
+        System.out.println("\n..............Printing network topology..............");
         for(Map.Entry<String, NodeInterface> nodeEntry: this.network.entrySet()){
             Node node = (Node) nodeEntry.getValue();
             node.print();
         }
         System.out.println("......................................................");
     }
-
 
     /**
      * This method creates instance of the network class and returns it

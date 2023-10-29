@@ -217,28 +217,32 @@ public class ChordProtocolSimulator {
      * neighbors this protocol should work.
      */
     public void printRing(){
-        NodeInterface head = null;
-        for(Map.Entry<String, NodeInterface> node: this.network.getTopology().entrySet()){
-            head = node.getValue();
-            break;
-        }
-        System.out.println("........printing ring..............");
+        NodeInterface head = this.network.getTopology().entrySet().stream().findFirst().get().getValue();
 
-        if(head.getNeighbors().size()==0){
+        System.out.println("\n..............Printing ring..............");
+
+        if (head.getNeighbors().size() == 0 || head.getSuccessor() == null){
+            System.out.print("ERROR: No neighbours or successors");
             return;
         }
 
         System.out.print(head.getName());
         NodeInterface next = head.getSuccessor();
-        while(true){
+        int counter = 1;
+        while(!next.getName().equals(head.getName())
+                && counter <= this.network.getTopology().entrySet().size() )
+        {
             System.out.print(" --- "+next.getName());
             next  = next.getSuccessor();
-            if(next.getName().equals(head.getName())){
-                System.out.print(" --- "+next.getName()+"\n");
-                break;
-            }
+            counter++;
         }
-        System.out.println(".....................................");
+        if (counter < this.network.getTopology().entrySet().size()) {
+            System.out.print("\tERROR: Not all the nodes in the ring");
+        }
+        if (counter > this.network.getTopology().entrySet().size()) {
+            System.out.print("\tERROR: Infinite loop - too many nodes");
+        }
+        System.out.println("\n.....................................");
     }
 
 
@@ -323,7 +327,7 @@ public class ChordProtocolSimulator {
         buildProtocol();
 
 
-        //printRing();
+        printRing();
         printNetwork();
 
         // tests the lookup operation

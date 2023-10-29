@@ -21,7 +21,7 @@ public class Node implements NodeInterface{
 
     // TODO this routing table can be used to implement different routing tables used in the protocol
     // for example finger table used by chord protocol can be populated in the routing table
-    public Object routingTable;
+    public LinkedHashMap<Integer, NodeInterface> routingTable;
 
     // TODO this data can store set of objects. For example, key indexes used in the chord protocol can be stored here
     public LinkedHashSet<Object> data;
@@ -85,10 +85,10 @@ public class Node implements NodeInterface{
 
 
     public void setRoutingTable(Object obj){
-        this.routingTable =obj;
+        this.routingTable = (LinkedHashMap<Integer, NodeInterface>) obj;
     }
 
-    public Object getRoutingTable(){
+    public LinkedHashMap<Integer, NodeInterface> getRoutingTable(){
         return this.routingTable;
     }
 
@@ -120,6 +120,6 @@ public class Node implements NodeInterface{
 
     @Override
     public String toString() {
-        return " " + name + " index:" + id + " " + data;
+        return " " + id + "_(" + name + ") " + data;
     }
 }
