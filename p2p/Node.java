@@ -117,4 +117,9 @@ public class Node implements NodeInterface{
             System.out.println("Data : "+this.data.toString());
         }
     }
+
+    @Override
+    public String toString() {
+        return " " + name + " index:" + id + " " + data;
+    }
 }

@@ -323,7 +323,7 @@ public class ChordProtocolSimulator {
         buildProtocol();
 
 
-        printRing();
+        //printRing();
         printNetwork();
 
         // tests the lookup operation

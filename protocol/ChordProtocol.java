@@ -7,6 +7,7 @@ import p2p.NodeInterface;
 
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * This class implements the chord protocol. The protocol is tested using the custom-built simulator.
@@ -19,12 +20,14 @@ public class ChordProtocol implements Protocol{
     // network object
     public NetworkInterface network;
 
-    // consistent hasing object
+    // consistent hashing object
     public ConsistentHashing ch;
 
     // key indexes. tuples of (<key name>, <key index>)
     public HashMap<String, Integer> keyIndexes;
 
+    // node indexes. tuples of (<node index>, <node>) sorted by index (Peer.getId())
+    public LinkedHashMap<Integer, NodeInterface> sorted;
 
     public ChordProtocol(int m){
         this.m = m;
@@ -115,17 +118,10 @@ public class ChordProtocol implements Protocol{
   
            int findNearest = getNetwork().getNode(key).getId();
            resultingNeighbour = getNearestNodetoAddNeighbour(findNearest);
-            System.out.println(key+ "is with index " + findNearest + " have neighbour values with node name"+ resultingNeighbour[0]+" node value"+ resultingNeighbour[1]);
+            System.out.println(key+ " is with index " + findNearest + " have neighbour values with node name "+ resultingNeighbour[0]+" node value"+ resultingNeighbour[1]);
             getNetwork().getNode(key).addNeighbor(resultingNeighbour[0],getNetwork().getNode(resultingNeighbour[0]));
         }
-        
-       
-        
-        
-        System.out.println(""+getNetwork().getTopology());
-        getNetwork().printTopology();
-        
-      
+
     }
 
 
@@ -213,9 +209,44 @@ public class ChordProtocol implements Protocol{
         TODO implement this logic
          */
 
+        sorted = getNetwork().getTopology().entrySet().stream()
+                .sorted(Comparator.comparing(nodeEntry -> nodeEntry.getValue().getId()))
+                .collect(Collectors.toMap(nodeEntry -> nodeEntry.getValue().getId(), Map.Entry::getValue,
+                        (e1, e2) -> e1, LinkedHashMap::new));
+
+        int max = (int) Math.pow(2, m);
+        System.out.println("Calculate " + m + " fingers to each node in a ring of " + max);
+
+        for(Map.Entry<Integer, NodeInterface> node : sorted.entrySet()) {
+            System.out.println("Calculate " + m + " fingers to " + node.getValue().getName()
+                    + " index:" + node.getValue().getId());
+            LinkedHashMap<Integer, NodeInterface> fingerTable = new LinkedHashMap<>();
+            for(int finger = 1; finger <= m; finger++) {
+                int start = (node.getValue().getId() + (int) Math.pow(2, finger -1)) % max;
+                int stop = ((node.getValue().getId() + (int) Math.pow(2, finger)) -1) % max;
+                NodeInterface contact = findEntryEqualOrBigger(start);
+                if (contact != null) {
+                    System.out.println("FINGER #" + finger
+                            + " range " + start + "-" + stop
+                            + " points to " + contact.getName()
+                            + " index:" + contact.getId());
+                } else {
+                    System.out.println("null");
+                }
+                fingerTable.put(start, contact);
+            }
+            node.getValue().setRoutingTable(fingerTable);
+        }
     }
 
-
+    private NodeInterface findEntryEqualOrBigger(int start) {
+        for (Map.Entry<Integer, NodeInterface> entry : sorted.entrySet()) {
+            if (entry.getKey() >= start) {
+                return entry.getValue();
+            }
+        }
+        return null; // No entry found
+    }
 
     /**
      * This method performs the lookup operation.
@@ -229,10 +260,17 @@ public class ChordProtocol implements Protocol{
     public LookUpResponse lookUp(int keyIndex){
         /*
         TODO implement this logic
+         * to get first hop peer.getRoutingTable()
          */
+
+        // PLACEHOLDER CODE choose any node to start searching for the key
+        // ask for some node -- the closest successor
+        NodeInterface destination = getNetwork().getTopology().get("Node 1");
+        System.out.println(" LOOKUP RESPONSE the keyIndex " + keyIndex + " is probably at the "
+                + destination.getName()
+                + " with keys " + destination.getData());
         return null;
     }
-
 
 
 }
