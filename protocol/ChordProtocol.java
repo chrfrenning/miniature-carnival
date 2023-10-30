@@ -190,47 +190,6 @@ public class ChordProtocol implements Protocol{
     }
 
 
-    public void buildOverlayNetwork_alina() {
-        /*
-        TODO implement this logic
-         */
-        HashMap<Integer, NodeInterface> nodeIndexes = new HashMap<>();
-
-        // assign index to each node and put in a local map indexed by index
-        for (Map.Entry<String, NodeInterface> node : getNetwork().getTopology().entrySet()) {
-            int index = ch.hash(node.getKey());
-            // If the index is already assigned to a node
-            // slide to the next available index, handover data.
-            // while (nodeIndexes.containsKey(index)) { index++; }
-            node.getValue().setId(index);
-            nodeIndexes.put(index, node.getValue());
-        }
-
-        // sort local map
-        sorted = nodeIndexes.entrySet().stream()
-                .sorted(Map.Entry.comparingByKey())
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
-                        (e1, e2) -> e1, LinkedHashMap::new));
-
-        // assign next neighbour to the previous one
-        NodeInterface prev = null;
-        NodeInterface first = null;
-
-        for (NodeInterface node : sorted.values()) {
-            if (prev != null) {
-                prev.addNeighbor(node.getName(), node);
-            } else {
-                first = node;
-            }
-            prev = node;
-        }
-
-        // assign the first one to the last one -- to make a ring
-        assert prev != null;
-        prev.addNeighbor(first.getName(), first);
-    }
-
-
 
     /**
      * This method builds the finger table. The finger table is the routing table used in the chord protocol to perform
