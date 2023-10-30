@@ -226,13 +226,13 @@ public class ChordProtocolSimulator {
             return;
         }
 
-        System.out.print(head.getName());
+        System.out.print(head.getId() + "_(" + head.getName() + ")");
         NodeInterface next = head.getSuccessor();
         int counter = 1;
         while(!next.getName().equals(head.getName())
                 && counter <= this.network.getTopology().entrySet().size() )
         {
-            System.out.print(" --- "+next.getName());
+            System.out.print(" --- " + next.getId() + "_(" + next.getName() + ")");
             next  = next.getSuccessor();
             counter++;
         }

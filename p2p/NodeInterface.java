@@ -92,6 +92,7 @@ public interface NodeInterface {
     void addData(Object data);
 
 
+    void removeData(Object data);
 
     /**
      * This method returns data stored in the node. Nodes can store different data depending on the usage. Different

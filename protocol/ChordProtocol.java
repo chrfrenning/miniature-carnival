@@ -87,7 +87,7 @@ public class ChordProtocol implements Protocol{
      *           2)     find neighbor based on consistent hash (neighbor should be next to the current node in the ring)
      *           3)     add neighbor to the peer (uses Peer.addNeighbor() method)
      */
-    public void buildOverlayNetwork_asfar(){
+    public void buildOverlayNetwork(){
 
         /*
         implement this logic
@@ -190,7 +190,7 @@ public class ChordProtocol implements Protocol{
     }
 
 
-    public void buildOverlayNetwork() {
+    public void buildOverlayNetwork_alina() {
         /*
         TODO implement this logic
          */
@@ -200,8 +200,8 @@ public class ChordProtocol implements Protocol{
         for (Map.Entry<String, NodeInterface> node : getNetwork().getTopology().entrySet()) {
             int index = ch.hash(node.getKey());
             // If the index is already assigned to a node
-            // slide to the next available index.
-            while (nodeIndexes.containsKey(index)) index++;
+            // slide to the next available index, handover data.
+            // while (nodeIndexes.containsKey(index)) { index++; }
             node.getValue().setId(index);
             nodeIndexes.put(index, node.getValue());
         }
@@ -291,20 +291,22 @@ public class ChordProtocol implements Protocol{
             }
             System.out.print(" " + entry.getKey());
         }
-        return null; // No entry found
+        Map.Entry<Integer, NodeInterface> first = sorted.entrySet().stream().findFirst().get();
+        System.out.println(" wrapped and found " + first.getKey());
+        return first.getValue();
     }
 
     public void printRoutingTables() {
         System.out.println("\n.................Printing routing tables...............");
-        System.out.println("\t interval \t node ");
+        System.out.println("\tINTERVAL \tNODE ");
 
         for (Map.Entry<Integer, NodeInterface> node : sorted.entrySet()) {
-            System.out.println(node.getValue().getName());
+            System.out.println("Node: " + node.getValue());
             FingerTable fingers = (FingerTable) node.getValue().getRoutingTable();
             for (Map.Entry<Integer, Finger> finger : fingers.fingers.entrySet()) {
                 System.out.println("\t" + finger.getValue().start
                         + "-" + finger.getValue().stop
-                        + "\t" + finger.getValue().node);
+                        + "\t\t" + finger.getValue().node);
             };
         }
 
@@ -325,15 +327,19 @@ public class ChordProtocol implements Protocol{
     public LookUpResponse lookUp(int keyIndex){
         /*
         TODO implement this logic
-         * to get first hop peer.getRoutingTable()
          */
 
-        // PLACEHOLDER CODE choose any node to start searching for the key
-        // ask for some node -- the closest successor
-        NodeInterface destination = getNetwork().getTopology().get("Node 1");
-        System.out.println(" LOOKUP RESPONSE the keyIndex " + keyIndex + " is probably at the "
-                + destination.getName()
-                + " with keys " + destination.getData());
+        for(Map.Entry<String, Integer> entry: keyIndexes.entrySet()) {
+            keyIndex = Integer.parseInt(String.valueOf(entry.getValue()));
+            System.out.println("\nkeyIndex " + keyIndex);
+            // PLACEHOLDER CODE choose any node to start searching for the key
+            // ask for some node -- the closest successor
+            NodeInterface departure = getNetwork().getTopology().get("Node 1");
+            FingerTable routing = (FingerTable) departure.getRoutingTable();
+            LinkedHashSet<Integer> data = (LinkedHashSet<Integer>) departure.getData();
+            NodeInterface destination = data.contains(keyIndex) ? departure : routing.getDestinationForKey(keyIndex);
+            System.out.println("\nFirst destination for the key " + keyIndex + " from " + departure.getName() + " is " + destination);
+        }
         return null;
     }
 

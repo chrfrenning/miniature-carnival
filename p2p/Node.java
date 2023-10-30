@@ -106,7 +106,7 @@ public class Node implements NodeInterface{
         Collection<NodeInterface> neightbors = this.getNeighbors();
         System.out.print("\tNeighbors: ");
         for(NodeInterface node : neightbors){
-            System.out.print(node.getName()+"\t");
+            System.out.print(node.getId() + "_(" + node.getName()+")\t");
         }
         // TODO Note: This introduces backward dependency on the protocols. The protocol should implement a routing table
         // in a way that overrides the toString() method. so that the contents of the routing table can be printed
