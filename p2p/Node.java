@@ -1,5 +1,7 @@
 package p2p;
 
+import protocol.FingerTable;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -21,7 +23,7 @@ public class Node implements NodeInterface{
 
     // TODO this routing table can be used to implement different routing tables used in the protocol
     // for example finger table used by chord protocol can be populated in the routing table
-    public LinkedHashMap<Integer, NodeInterface> routingTable;
+    public FingerTable routingTable;
 
     // TODO this data can store set of objects. For example, key indexes used in the chord protocol can be stored here
     public LinkedHashSet<Object> data;
@@ -85,10 +87,10 @@ public class Node implements NodeInterface{
 
 
     public void setRoutingTable(Object obj){
-        this.routingTable = (LinkedHashMap<Integer, NodeInterface>) obj;
+        this.routingTable = (FingerTable) obj;
     }
 
-    public LinkedHashMap<Integer, NodeInterface> getRoutingTable(){
+    public FingerTable getRoutingTable(){
         return this.routingTable;
     }
 

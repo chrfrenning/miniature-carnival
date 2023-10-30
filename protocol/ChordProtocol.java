@@ -260,7 +260,7 @@ public class ChordProtocol implements Protocol{
 
         for(Map.Entry<Integer, NodeInterface> node : sorted.entrySet()) {
             System.out.println("Calculate " + m + " fingers to "+ node.getValue().getId() +"_(" + node.getValue().getName() + ")");
-            LinkedHashMap<Integer, NodeInterface> fingerTable = new LinkedHashMap<>();
+            FingerTable fingerTable = new FingerTable();
             for(int finger = 1; finger <= m; finger++) {
                 int start = (node.getValue().getId() + (int) Math.pow(2, finger -1)) % max;
                 int stop = ((node.getValue().getId() + (int) Math.pow(2, finger)) -1) % max;
@@ -270,13 +270,13 @@ public class ChordProtocol implements Protocol{
                             + " range " + Integer.toBinaryString(start) + "-" + Integer.toBinaryString(stop)
                             + " points to "+contact.getId() +"_(" + contact.getName() + ")");
                 } else {
-                    System.out.println(" ERROR: Not found!");
+                    System.out.println(" ERROR: Not found");
                 }
-                fingerTable.put(start, contact);
+                fingerTable.addFinger(new Finger(start, stop, contact));
             }
             node.getValue().setRoutingTable(fingerTable);
         }
-        //printRoutingTables();
+        printRoutingTables();
     }
 
     private NodeInterface findEntryEqualOrBigger(int start) {
@@ -292,6 +292,25 @@ public class ChordProtocol implements Protocol{
             System.out.print(" " + entry.getKey());
         }
         return null; // No entry found
+    }
+
+    public void printRoutingTables() {
+        System.out.println("\n.................Printing routing tables...............");
+        System.out.println("\t interval \t node ");
+
+        for (Map.Entry<Integer, NodeInterface> node : sorted.entrySet()) {
+            System.out.println(node.getValue().getName());
+            FingerTable fingers = (FingerTable) node.getValue().getRoutingTable();
+            for (Map.Entry<Integer, Finger> finger : fingers.fingers.entrySet()) {
+                System.out.println("\t" + finger.getValue().start
+                        + "-" + finger.getValue().stop
+                        + "\t" + finger.getValue().node);
+            };
+        }
+
+        System.out.println(".......................................................");
+
+
     }
 
     /**
