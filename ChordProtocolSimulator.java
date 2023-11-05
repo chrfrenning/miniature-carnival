@@ -253,13 +253,15 @@ public class ChordProtocolSimulator {
      * index (check response) is used for the comparison.
      */
     public void testLookUp(){
+        int hops = 0;
 
         for(Map.Entry<String, Integer> entry: keyIndexes.entrySet())
         {
 
             // lookup the key index
             LookUpResponse response = protocol.lookUp(entry.getValue());
-
+            hops += response.peers_looked_up.size();
+            
             if(response == null)
             {
                 return;
@@ -276,6 +278,8 @@ public class ChordProtocolSimulator {
                 break;
             }
         }
+
+        System.out.println("Average number of hops: " + hops/keyIndexes.size());
 
     }
 

@@ -1,0 +1,396 @@
+value 333have nearest int of 480
+Node 1 is with index 333 have neighbour values with node name Node 7 node value480
+value 266have nearest int of 333
+Node 2 is with index 266 have neighbour values with node name Node 1 node value333
+value 139have nearest int of 266
+Node 3 is with index 139 have neighbour values with node name Node 2 node value266
+value 105have nearest int of 131
+Node 4 is with index 105 have neighbour values with node name Node 10 node value131
+value 865have nearest int of 1006
+Node 5 is with index 865 have neighbour values with node name Node 9 node value1006
+value 666have nearest int of 865
+Node 6 is with index 666 have neighbour values with node name Node 5 node value865
+value 480have nearest int of 601
+Node 7 is with index 480 have neighbour values with node name Node 8 node value601
+value 601have nearest int of 666
+Node 8 is with index 601 have neighbour values with node name Node 6 node value666
+value 1006have nearest int of -1
+Node 9 is with index 1006 have neighbour values with node name Node 4 node value105
+value 131have nearest int of 139
+Node 10 is with index 131 have neighbour values with node name Node 3 node value139
+--------------------------------------------
+Calculate 10 fingers to each node in a ring of 1024
+--------------------------------------------
+Calculate 10 fingers to 105_(Node 4)
+		...Searching closest to 106. Trying...  105 Found: 131
+	FINGER #1 range 1101010-1101010 points to 131_(Node 10)
+		...Searching closest to 107. Trying...  105 Found: 131
+	FINGER #2 range 1101011-1101100 points to 131_(Node 10)
+		...Searching closest to 109. Trying...  105 Found: 131
+	FINGER #3 range 1101101-1110000 points to 131_(Node 10)
+		...Searching closest to 113. Trying...  105 Found: 131
+	FINGER #4 range 1110001-1111000 points to 131_(Node 10)
+		...Searching closest to 121. Trying...  105 Found: 131
+	FINGER #5 range 1111001-10001000 points to 131_(Node 10)
+		...Searching closest to 137. Trying...  105 131 Found: 139
+	FINGER #6 range 10001001-10101000 points to 139_(Node 3)
+		...Searching closest to 169. Trying...  105 131 139 Found: 266
+	FINGER #7 range 10101001-11101000 points to 266_(Node 2)
+		...Searching closest to 233. Trying...  105 131 139 Found: 266
+	FINGER #8 range 11101001-101101000 points to 266_(Node 2)
+		...Searching closest to 361. Trying...  105 131 139 266 333 Found: 480
+	FINGER #9 range 101101001-1001101000 points to 480_(Node 7)
+		...Searching closest to 617. Trying...  105 131 139 266 333 480 601 Found: 666
+	FINGER #10 range 1001101001-1101000 points to 666_(Node 6)
+Calculate 10 fingers to 131_(Node 10)
+		...Searching closest to 132. Trying...  105 131 Found: 139
+	FINGER #1 range 10000100-10000100 points to 139_(Node 3)
+		...Searching closest to 133. Trying...  105 131 Found: 139
+	FINGER #2 range 10000101-10000110 points to 139_(Node 3)
+		...Searching closest to 135. Trying...  105 131 Found: 139
+	FINGER #3 range 10000111-10001010 points to 139_(Node 3)
+	FINGER #4 range 10001011-10010010 points to 139_(Node 3)
+		...Searching closest to 147. Trying...  105 131 139 Found: 266
+	FINGER #5 range 10010011-10100010 points to 266_(Node 2)
+		...Searching closest to 163. Trying...  105 131 139 Found: 266
+	FINGER #6 range 10100011-11000010 points to 266_(Node 2)
+		...Searching closest to 195. Trying...  105 131 139 Found: 266
+	FINGER #7 range 11000011-100000010 points to 266_(Node 2)
+		...Searching closest to 259. Trying...  105 131 139 Found: 266
+	FINGER #8 range 100000011-110000010 points to 266_(Node 2)
+		...Searching closest to 387. Trying...  105 131 139 266 333 Found: 480
+	FINGER #9 range 110000011-1010000010 points to 480_(Node 7)
+		...Searching closest to 643. Trying...  105 131 139 266 333 480 601 Found: 666
+	FINGER #10 range 1010000011-10000010 points to 666_(Node 6)
+Calculate 10 fingers to 139_(Node 3)
+		...Searching closest to 140. Trying...  105 131 139 Found: 266
+	FINGER #1 range 10001100-10001100 points to 266_(Node 2)
+		...Searching closest to 141. Trying...  105 131 139 Found: 266
+	FINGER #2 range 10001101-10001110 points to 266_(Node 2)
+		...Searching closest to 143. Trying...  105 131 139 Found: 266
+	FINGER #3 range 10001111-10010010 points to 266_(Node 2)
+		...Searching closest to 147. Trying...  105 131 139 Found: 266
+	FINGER #4 range 10010011-10011010 points to 266_(Node 2)
+		...Searching closest to 155. Trying...  105 131 139 Found: 266
+	FINGER #5 range 10011011-10101010 points to 266_(Node 2)
+		...Searching closest to 171. Trying...  105 131 139 Found: 266
+	FINGER #6 range 10101011-11001010 points to 266_(Node 2)
+		...Searching closest to 203. Trying...  105 131 139 Found: 266
+	FINGER #7 range 11001011-100001010 points to 266_(Node 2)
+		...Searching closest to 267. Trying...  105 131 139 266 Found: 333
+	FINGER #8 range 100001011-110001010 points to 333_(Node 1)
+		...Searching closest to 395. Trying...  105 131 139 266 333 Found: 480
+	FINGER #9 range 110001011-1010001010 points to 480_(Node 7)
+		...Searching closest to 651. Trying...  105 131 139 266 333 480 601 Found: 666
+	FINGER #10 range 1010001011-10001010 points to 666_(Node 6)
+Calculate 10 fingers to 266_(Node 2)
+		...Searching closest to 267. Trying...  105 131 139 266 Found: 333
+	FINGER #1 range 100001011-100001011 points to 333_(Node 1)
+		...Searching closest to 268. Trying...  105 131 139 266 Found: 333
+	FINGER #2 range 100001100-100001101 points to 333_(Node 1)
+		...Searching closest to 270. Trying...  105 131 139 266 Found: 333
+	FINGER #3 range 100001110-100010001 points to 333_(Node 1)
+		...Searching closest to 274. Trying...  105 131 139 266 Found: 333
+	FINGER #4 range 100010010-100011001 points to 333_(Node 1)
+		...Searching closest to 282. Trying...  105 131 139 266 Found: 333
+	FINGER #5 range 100011010-100101001 points to 333_(Node 1)
+		...Searching closest to 298. Trying...  105 131 139 266 Found: 333
+	FINGER #6 range 100101010-101001001 points to 333_(Node 1)
+		...Searching closest to 330. Trying...  105 131 139 266 Found: 333
+	FINGER #7 range 101001010-110001001 points to 333_(Node 1)
+		...Searching closest to 394. Trying...  105 131 139 266 333 Found: 480
+	FINGER #8 range 110001010-1000001001 points to 480_(Node 7)
+		...Searching closest to 522. Trying...  105 131 139 266 333 480 Found: 601
+	FINGER #9 range 1000001010-1100001001 points to 601_(Node 8)
+		...Searching closest to 778. Trying...  105 131 139 266 333 480 601 666 Found: 865
+	FINGER #10 range 1100001010-100001001 points to 865_(Node 5)
+Calculate 10 fingers to 333_(Node 1)
+		...Searching closest to 334. Trying...  105 131 139 266 333 Found: 480
+	FINGER #1 range 101001110-101001110 points to 480_(Node 7)
+		...Searching closest to 335. Trying...  105 131 139 266 333 Found: 480
+	FINGER #2 range 101001111-101010000 points to 480_(Node 7)
+		...Searching closest to 337. Trying...  105 131 139 266 333 Found: 480
+	FINGER #3 range 101010001-101010100 points to 480_(Node 7)
+		...Searching closest to 341. Trying...  105 131 139 266 333 Found: 480
+	FINGER #4 range 101010101-101011100 points to 480_(Node 7)
+		...Searching closest to 349. Trying...  105 131 139 266 333 Found: 480
+	FINGER #5 range 101011101-101101100 points to 480_(Node 7)
+		...Searching closest to 365. Trying...  105 131 139 266 333 Found: 480
+	FINGER #6 range 101101101-110001100 points to 480_(Node 7)
+		...Searching closest to 397. Trying...  105 131 139 266 333 Found: 480
+	FINGER #7 range 110001101-111001100 points to 480_(Node 7)
+		...Searching closest to 461. Trying...  105 131 139 266 333 Found: 480
+	FINGER #8 range 111001101-1001001100 points to 480_(Node 7)
+		...Searching closest to 589. Trying...  105 131 139 266 333 480 Found: 601
+	FINGER #9 range 1001001101-1101001100 points to 601_(Node 8)
+		...Searching closest to 845. Trying...  105 131 139 266 333 480 601 666 Found: 865
+	FINGER #10 range 1101001101-101001100 points to 865_(Node 5)
+Calculate 10 fingers to 480_(Node 7)
+		...Searching closest to 481. Trying...  105 131 139 266 333 480 Found: 601
+	FINGER #1 range 111100001-111100001 points to 601_(Node 8)
+		...Searching closest to 482. Trying...  105 131 139 266 333 480 Found: 601
+	FINGER #2 range 111100010-111100011 points to 601_(Node 8)
+		...Searching closest to 484. Trying...  105 131 139 266 333 480 Found: 601
+	FINGER #3 range 111100100-111100111 points to 601_(Node 8)
+		...Searching closest to 488. Trying...  105 131 139 266 333 480 Found: 601
+	FINGER #4 range 111101000-111101111 points to 601_(Node 8)
+		...Searching closest to 496. Trying...  105 131 139 266 333 480 Found: 601
+	FINGER #5 range 111110000-111111111 points to 601_(Node 8)
+		...Searching closest to 512. Trying...  105 131 139 266 333 480 Found: 601
+	FINGER #6 range 1000000000-1000011111 points to 601_(Node 8)
+		...Searching closest to 544. Trying...  105 131 139 266 333 480 Found: 601
+	FINGER #7 range 1000100000-1001011111 points to 601_(Node 8)
+		...Searching closest to 608. Trying...  105 131 139 266 333 480 601 Found: 666
+	FINGER #8 range 1001100000-1011011111 points to 666_(Node 6)
+		...Searching closest to 736. Trying...  105 131 139 266 333 480 601 666 Found: 865
+	FINGER #9 range 1011100000-1111011111 points to 865_(Node 5)
+		...Searching closest to 992. Trying...  105 131 139 266 333 480 601 666 865 Found: 1006
+	FINGER #10 range 1111100000-111011111 points to 1006_(Node 9)
+Calculate 10 fingers to 601_(Node 8)
+		...Searching closest to 602. Trying...  105 131 139 266 333 480 601 Found: 666
+	FINGER #1 range 1001011010-1001011010 points to 666_(Node 6)
+		...Searching closest to 603. Trying...  105 131 139 266 333 480 601 Found: 666
+	FINGER #2 range 1001011011-1001011100 points to 666_(Node 6)
+		...Searching closest to 605. Trying...  105 131 139 266 333 480 601 Found: 666
+	FINGER #3 range 1001011101-1001100000 points to 666_(Node 6)
+		...Searching closest to 609. Trying...  105 131 139 266 333 480 601 Found: 666
+	FINGER #4 range 1001100001-1001101000 points to 666_(Node 6)
+		...Searching closest to 617. Trying...  105 131 139 266 333 480 601 Found: 666
+	FINGER #5 range 1001101001-1001111000 points to 666_(Node 6)
+		...Searching closest to 633. Trying...  105 131 139 266 333 480 601 Found: 666
+	FINGER #6 range 1001111001-1010011000 points to 666_(Node 6)
+		...Searching closest to 665. Trying...  105 131 139 266 333 480 601 Found: 666
+	FINGER #7 range 1010011001-1011011000 points to 666_(Node 6)
+		...Searching closest to 729. Trying...  105 131 139 266 333 480 601 666 Found: 865
+	FINGER #8 range 1011011001-1101011000 points to 865_(Node 5)
+		...Searching closest to 857. Trying...  105 131 139 266 333 480 601 666 Found: 865
+	FINGER #9 range 1101011001-1011000 points to 865_(Node 5)
+		...Searching closest to 89. Trying...  Found: 105
+	FINGER #10 range 1011001-1001011000 points to 105_(Node 4)
+Calculate 10 fingers to 666_(Node 6)
+		...Searching closest to 667. Trying...  105 131 139 266 333 480 601 666 Found: 865
+	FINGER #1 range 1010011011-1010011011 points to 865_(Node 5)
+		...Searching closest to 668. Trying...  105 131 139 266 333 480 601 666 Found: 865
+	FINGER #2 range 1010011100-1010011101 points to 865_(Node 5)
+		...Searching closest to 670. Trying...  105 131 139 266 333 480 601 666 Found: 865
+	FINGER #3 range 1010011110-1010100001 points to 865_(Node 5)
+		...Searching closest to 674. Trying...  105 131 139 266 333 480 601 666 Found: 865
+	FINGER #4 range 1010100010-1010101001 points to 865_(Node 5)
+		...Searching closest to 682. Trying...  105 131 139 266 333 480 601 666 Found: 865
+	FINGER #5 range 1010101010-1010111001 points to 865_(Node 5)
+		...Searching closest to 698. Trying...  105 131 139 266 333 480 601 666 Found: 865
+	FINGER #6 range 1010111010-1011011001 points to 865_(Node 5)
+		...Searching closest to 730. Trying...  105 131 139 266 333 480 601 666 Found: 865
+	FINGER #7 range 1011011010-1100011001 points to 865_(Node 5)
+		...Searching closest to 794. Trying...  105 131 139 266 333 480 601 666 Found: 865
+	FINGER #8 range 1100011010-1110011001 points to 865_(Node 5)
+		...Searching closest to 922. Trying...  105 131 139 266 333 480 601 666 865 Found: 1006
+	FINGER #9 range 1110011010-10011001 points to 1006_(Node 9)
+		...Searching closest to 154. Trying...  105 131 139 Found: 266
+	FINGER #10 range 10011010-1010011001 points to 266_(Node 2)
+Calculate 10 fingers to 865_(Node 5)
+		...Searching closest to 866. Trying...  105 131 139 266 333 480 601 666 865 Found: 1006
+	FINGER #1 range 1101100010-1101100010 points to 1006_(Node 9)
+		...Searching closest to 867. Trying...  105 131 139 266 333 480 601 666 865 Found: 1006
+	FINGER #2 range 1101100011-1101100100 points to 1006_(Node 9)
+		...Searching closest to 869. Trying...  105 131 139 266 333 480 601 666 865 Found: 1006
+	FINGER #3 range 1101100101-1101101000 points to 1006_(Node 9)
+		...Searching closest to 873. Trying...  105 131 139 266 333 480 601 666 865 Found: 1006
+	FINGER #4 range 1101101001-1101110000 points to 1006_(Node 9)
+		...Searching closest to 881. Trying...  105 131 139 266 333 480 601 666 865 Found: 1006
+	FINGER #5 range 1101110001-1110000000 points to 1006_(Node 9)
+		...Searching closest to 897. Trying...  105 131 139 266 333 480 601 666 865 Found: 1006
+	FINGER #6 range 1110000001-1110100000 points to 1006_(Node 9)
+		...Searching closest to 929. Trying...  105 131 139 266 333 480 601 666 865 Found: 1006
+	FINGER #7 range 1110100001-1111100000 points to 1006_(Node 9)
+		...Searching closest to 993. Trying...  105 131 139 266 333 480 601 666 865 Found: 1006
+	FINGER #8 range 1111100001-1100000 points to 1006_(Node 9)
+		...Searching closest to 97. Trying...  Found: 105
+	FINGER #9 range 1100001-101100000 points to 105_(Node 4)
+		...Searching closest to 353. Trying...  105 131 139 266 333 Found: 480
+	FINGER #10 range 101100001-1101100000 points to 480_(Node 7)
+Calculate 10 fingers to 1006_(Node 9)
+		...Searching closest to 1007. Trying...  105 131 139 266 333 480 601 666 865 1006 wrapped and found 105
+	FINGER #1 range 1111101111-1111101111 points to 105_(Node 4)
+		...Searching closest to 1008. Trying...  105 131 139 266 333 480 601 666 865 1006 wrapped and found 105
+	FINGER #2 range 1111110000-1111110001 points to 105_(Node 4)
+		...Searching closest to 1010. Trying...  105 131 139 266 333 480 601 666 865 1006 wrapped and found 105
+	FINGER #3 range 1111110010-1111110101 points to 105_(Node 4)
+		...Searching closest to 1014. Trying...  105 131 139 266 333 480 601 666 865 1006 wrapped and found 105
+	FINGER #4 range 1111110110-1111111101 points to 105_(Node 4)
+		...Searching closest to 1022. Trying...  105 131 139 266 333 480 601 666 865 1006 wrapped and found 105
+	FINGER #5 range 1111111110-1101 points to 105_(Node 4)
+		...Searching closest to 14. Trying...  Found: 105
+	FINGER #6 range 1110-101101 points to 105_(Node 4)
+		...Searching closest to 46. Trying...  Found: 105
+	FINGER #7 range 101110-1101101 points to 105_(Node 4)
+		...Searching closest to 110. Trying...  105 Found: 131
+	FINGER #8 range 1101110-11101101 points to 131_(Node 10)
+		...Searching closest to 238. Trying...  105 131 139 Found: 266
+	FINGER #9 range 11101110-111101101 points to 266_(Node 2)
+		...Searching closest to 494. Trying...  105 131 139 266 333 480 Found: 601
+	FINGER #10 range 111101110-1111101101 points to 601_(Node 8)
+
+.................Printing routing tables...............
+	INTERVAL 	NODE 
+Node:  105_(Node 4) []
+	113-120		 131_(Node 10) []
+	121-136		 131_(Node 10) []
+	137-168		 139_(Node 3) []
+	169-232		 266_(Node 2) [144]
+	233-360		 266_(Node 2) [144]
+	361-616		 480_(Node 7) [382]
+	617-104		 666_(Node 6) []
+	106-106		 131_(Node 10) []
+	107-108		 131_(Node 10) []
+	109-112		 131_(Node 10) []
+Node:  131_(Node 10) []
+	147-162		 266_(Node 2) [144]
+	163-194		 266_(Node 2) [144]
+	195-258		 266_(Node 2) [144]
+	259-386		 266_(Node 2) [144]
+	387-642		 480_(Node 7) [382]
+	643-130		 666_(Node 6) []
+	132-132		 139_(Node 3) []
+	133-134		 139_(Node 3) []
+	135-138		 139_(Node 3) []
+	139-146		 139_(Node 3) []
+Node:  139_(Node 3) []
+	147-154		 266_(Node 2) [144]
+	155-170		 266_(Node 2) [144]
+	171-202		 266_(Node 2) [144]
+	203-266		 266_(Node 2) [144]
+	267-394		 333_(Node 1) []
+	395-650		 480_(Node 7) [382]
+	651-138		 666_(Node 6) []
+	140-140		 266_(Node 2) [144]
+	141-142		 266_(Node 2) [144]
+	143-146		 266_(Node 2) [144]
+Node:  266_(Node 2) [144]
+	274-281		 333_(Node 1) []
+	282-297		 333_(Node 1) []
+	298-329		 333_(Node 1) []
+	330-393		 333_(Node 1) []
+	394-521		 480_(Node 7) [382]
+	522-777		 601_(Node 8) [489]
+	778-265		 865_(Node 5) [669]
+	267-267		 333_(Node 1) []
+	268-269		 333_(Node 1) []
+	270-273		 333_(Node 1) []
+Node:  333_(Node 1) []
+	337-340		 480_(Node 7) [382]
+	341-348		 480_(Node 7) [382]
+	349-364		 480_(Node 7) [382]
+	365-396		 480_(Node 7) [382]
+	397-460		 480_(Node 7) [382]
+	461-588		 480_(Node 7) [382]
+	589-844		 601_(Node 8) [489]
+	845-332		 865_(Node 5) [669]
+	334-334		 480_(Node 7) [382]
+	335-336		 480_(Node 7) [382]
+Node:  480_(Node 7) [382]
+	496-511		 601_(Node 8) [489]
+	512-543		 601_(Node 8) [489]
+	544-607		 601_(Node 8) [489]
+	608-735		 666_(Node 6) []
+	736-991		 865_(Node 5) [669]
+	992-479		 1006_(Node 9) [932]
+	481-481		 601_(Node 8) [489]
+	482-483		 601_(Node 8) [489]
+	484-487		 601_(Node 8) [489]
+	488-495		 601_(Node 8) [489]
+Node:  601_(Node 8) [489]
+	609-616		 666_(Node 6) []
+	617-632		 666_(Node 6) []
+	633-664		 666_(Node 6) []
+	665-728		 666_(Node 6) []
+	729-856		 865_(Node 5) [669]
+	857-88		 865_(Node 5) [669]
+	89-600		 105_(Node 4) []
+	602-602		 666_(Node 6) []
+	603-604		 666_(Node 6) []
+	605-608		 666_(Node 6) []
+Node:  666_(Node 6) []
+	674-681		 865_(Node 5) [669]
+	682-697		 865_(Node 5) [669]
+	698-729		 865_(Node 5) [669]
+	730-793		 865_(Node 5) [669]
+	794-921		 865_(Node 5) [669]
+	922-153		 1006_(Node 9) [932]
+	154-665		 266_(Node 2) [144]
+	667-667		 865_(Node 5) [669]
+	668-669		 865_(Node 5) [669]
+	670-673		 865_(Node 5) [669]
+Node:  865_(Node 5) [669]
+	881-896		 1006_(Node 9) [932]
+	897-928		 1006_(Node 9) [932]
+	929-992		 1006_(Node 9) [932]
+	993-96		 1006_(Node 9) [932]
+	97-352		 105_(Node 4) []
+	353-864		 480_(Node 7) [382]
+	866-866		 1006_(Node 9) [932]
+	867-868		 1006_(Node 9) [932]
+	869-872		 1006_(Node 9) [932]
+	873-880		 1006_(Node 9) [932]
+Node:  1006_(Node 9) [932]
+	1008-1009		 105_(Node 4) []
+	1010-1013		 105_(Node 4) []
+	1014-1021		 105_(Node 4) []
+	1022-13		 105_(Node 4) []
+	14-45		 105_(Node 4) []
+	46-109		 105_(Node 4) []
+	110-237		 131_(Node 10) []
+	238-493		 266_(Node 2) [144]
+	494-1005		 601_(Node 8) [489]
+	1007-1007		 105_(Node 4) []
+.......................................................
+
+..............Printing ring..............
+333_(Node 1) --- 480_(Node 7) --- 601_(Node 8) --- 666_(Node 6) --- 865_(Node 5) --- 1006_(Node 9) --- 105_(Node 4) --- 131_(Node 10) --- 139_(Node 3) --- 266_(Node 2)
+.....................................
+
+..............Printing network topology..............
+Node : Node 1	Index: 333	Neighbors: 480_(Node 7)		{337=340 --> 480_(Node 7) [382], 341=348 --> 480_(Node 7) [382], 349=364 --> 480_(Node 7) [382], 365=396 --> 480_(Node 7) [382], 397=460 --> 480_(Node 7) [382], 461=588 --> 480_(Node 7) [382], 589=844 --> 601_(Node 8) [489], 845=332 --> 865_(Node 5) [669], 334=334 --> 480_(Node 7) [382], 335=336 --> 480_(Node 7) [382]}
+Data : []
+Node : Node 2	Index: 266	Neighbors: 333_(Node 1)		{274=281 --> 333_(Node 1) [], 282=297 --> 333_(Node 1) [], 298=329 --> 333_(Node 1) [], 330=393 --> 333_(Node 1) [], 394=521 --> 480_(Node 7) [382], 522=777 --> 601_(Node 8) [489], 778=265 --> 865_(Node 5) [669], 267=267 --> 333_(Node 1) [], 268=269 --> 333_(Node 1) [], 270=273 --> 333_(Node 1) []}
+Data : [144]
+Node : Node 3	Index: 139	Neighbors: 266_(Node 2)		{147=154 --> 266_(Node 2) [144], 155=170 --> 266_(Node 2) [144], 171=202 --> 266_(Node 2) [144], 203=266 --> 266_(Node 2) [144], 267=394 --> 333_(Node 1) [], 395=650 --> 480_(Node 7) [382], 651=138 --> 666_(Node 6) [], 140=140 --> 266_(Node 2) [144], 141=142 --> 266_(Node 2) [144], 143=146 --> 266_(Node 2) [144]}
+Data : []
+Node : Node 4	Index: 105	Neighbors: 131_(Node 10)		{113=120 --> 131_(Node 10) [], 121=136 --> 131_(Node 10) [], 137=168 --> 139_(Node 3) [], 169=232 --> 266_(Node 2) [144], 233=360 --> 266_(Node 2) [144], 361=616 --> 480_(Node 7) [382], 617=104 --> 666_(Node 6) [], 106=106 --> 131_(Node 10) [], 107=108 --> 131_(Node 10) [], 109=112 --> 131_(Node 10) []}
+Data : []
+Node : Node 5	Index: 865	Neighbors: 1006_(Node 9)		{881=896 --> 1006_(Node 9) [932], 897=928 --> 1006_(Node 9) [932], 929=992 --> 1006_(Node 9) [932], 993=96 --> 1006_(Node 9) [932], 97=352 --> 105_(Node 4) [], 353=864 --> 480_(Node 7) [382], 866=866 --> 1006_(Node 9) [932], 867=868 --> 1006_(Node 9) [932], 869=872 --> 1006_(Node 9) [932], 873=880 --> 1006_(Node 9) [932]}
+Data : [669]
+Node : Node 6	Index: 666	Neighbors: 865_(Node 5)		{674=681 --> 865_(Node 5) [669], 682=697 --> 865_(Node 5) [669], 698=729 --> 865_(Node 5) [669], 730=793 --> 865_(Node 5) [669], 794=921 --> 865_(Node 5) [669], 922=153 --> 1006_(Node 9) [932], 154=665 --> 266_(Node 2) [144], 667=667 --> 865_(Node 5) [669], 668=669 --> 865_(Node 5) [669], 670=673 --> 865_(Node 5) [669]}
+Data : []
+Node : Node 7	Index: 480	Neighbors: 601_(Node 8)		{496=511 --> 601_(Node 8) [489], 512=543 --> 601_(Node 8) [489], 544=607 --> 601_(Node 8) [489], 608=735 --> 666_(Node 6) [], 736=991 --> 865_(Node 5) [669], 992=479 --> 1006_(Node 9) [932], 481=481 --> 601_(Node 8) [489], 482=483 --> 601_(Node 8) [489], 484=487 --> 601_(Node 8) [489], 488=495 --> 601_(Node 8) [489]}
+Data : [382]
+Node : Node 8	Index: 601	Neighbors: 666_(Node 6)		{609=616 --> 666_(Node 6) [], 617=632 --> 666_(Node 6) [], 633=664 --> 666_(Node 6) [], 665=728 --> 666_(Node 6) [], 729=856 --> 865_(Node 5) [669], 857=88 --> 865_(Node 5) [669], 89=600 --> 105_(Node 4) [], 602=602 --> 666_(Node 6) [], 603=604 --> 666_(Node 6) [], 605=608 --> 666_(Node 6) []}
+Data : [489]
+Node : Node 9	Index: 1006	Neighbors: 105_(Node 4)		{1008=1009 --> 105_(Node 4) [], 1010=1013 --> 105_(Node 4) [], 1014=1021 --> 105_(Node 4) [], 1022=13 --> 105_(Node 4) [], 14=45 --> 105_(Node 4) [], 46=109 --> 105_(Node 4) [], 110=237 --> 131_(Node 10) [], 238=493 --> 266_(Node 2) [144], 494=1005 --> 601_(Node 8) [489], 1007=1007 --> 105_(Node 4) []}
+Data : [932]
+Node : Node 10	Index: 131	Neighbors: 139_(Node 3)		{147=162 --> 266_(Node 2) [144], 163=194 --> 266_(Node 2) [144], 195=258 --> 266_(Node 2) [144], 259=386 --> 266_(Node 2) [144], 387=642 --> 480_(Node 7) [382], 643=130 --> 666_(Node 6) [], 132=132 --> 139_(Node 3) [], 133=134 --> 139_(Node 3) [], 135=138 --> 139_(Node 3) [], 139=146 --> 139_(Node 3) []}
+Data : []
+......................................................
+...Matching key 932 to interval:  337-340  341-348  349-364  365-396  397-460  461-588  589-844 Found: 845-332
+...Matching key 932 to interval:  881-896  897-928 Found: 929-992
+peers : Node 1	Node 5	Node 9		 hop count : 3	 node index : 1006	 node name : Node 9
+lookup successful for key 1
+...Matching key 144 to interval:  337-340  341-348  349-364  365-396  397-460  461-588  589-844 Found: 845-332
+...Matching key 144 to interval:  881-896  897-928  929-992  993-96 Found: 97-352
+...Matching key 144 to interval:  113-120  121-136 Found: 137-168
+...Matching key 144 to interval:  147-154  155-170  171-202  203-266  267-394  395-650  651-138  140-140  141-142 Found: 143-146
+peers : Node 1	Node 5	Node 4	Node 3	Node 2		 hop count : 5	 node index : 266	 node name : Node 2
+lookup successful for key 2
+...Matching key 382 to interval:  337-340  341-348  349-364 Found: 365-396
+peers : Node 1	Node 7		 hop count : 2	 node index : 480	 node name : Node 7
+lookup successful for key 3
+...Matching key 669 to interval:  337-340  341-348  349-364  365-396  397-460  461-588 Found: 589-844
+...Matching key 669 to interval:  609-616  617-632  633-664 Found: 665-728
+...Matching key 669 to interval:  674-681  682-697  698-729  730-793  794-921  922-153  154-665  667-667 Found: 668-669
+peers : Node 1	Node 8	Node 6	Node 5		 hop count : 4	 node index : 865	 node name : Node 5
+lookup successful for key 4
+...Matching key 489 to interval:  337-340  341-348  349-364  365-396  397-460 Found: 461-588
+...Matching key 489 to interval:  496-511  512-543  544-607  608-735  736-991  992-479  481-481  482-483  484-487 Found: 488-495
+peers : Node 1	Node 7	Node 8		 hop count : 3	 node index : 601	 node name : Node 8
+lookup successful for key 5
+Average number of hops: 3

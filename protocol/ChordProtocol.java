@@ -284,23 +284,36 @@ public class ChordProtocol implements Protocol{
      * @return names of nodes that have been searched and the final node that contains the key
      */
     public LookUpResponse lookUp(int keyIndex){
-        /*
-        TODO implement this logic
-         */
-
-        for(Map.Entry<String, Integer> entry: keyIndexes.entrySet()) {
-            keyIndex = Integer.parseInt(String.valueOf(entry.getValue()));
-            System.out.println("\nkeyIndex " + keyIndex);
-            // PLACEHOLDER CODE choose any node to start searching for the key
-            // ask for some node -- the closest successor
-            NodeInterface departure = getNetwork().getTopology().get("Node 1");
-            FingerTable routing = (FingerTable) departure.getRoutingTable();
+        // Initialize a list to store the names of nodes that have been searched
+        LinkedHashSet<String> searchedNodes = new LinkedHashSet<>();
+    
+        // Choose any node to start searching for the key
+        NodeInterface departure = getNetwork().getTopology().values().iterator().next();
+        
+        // Placeholder for the destination node
+        NodeInterface destination = null;
+    
+        // Loop until the destination node is found
+        while (true) {
+            // Add the current node to the list of searched nodes
+            searchedNodes.add(departure.getName());
+    
+            // Check if the current node contains the data item
             LinkedHashSet<Integer> data = (LinkedHashSet<Integer>) departure.getData();
-            NodeInterface destination = data.contains(keyIndex) ? departure : routing.getDestinationForKey(keyIndex);
-            System.out.println("\nFirst destination for the key " + keyIndex + " from " + departure.getName() + " is " + destination);
+            if (data.contains(keyIndex)) {
+                destination = departure;
+                break;
+            }
+    
+            // If not, find the next node to search using the finger table
+            FingerTable routing = (FingerTable) departure.getRoutingTable();
+            departure = routing.getDestinationForKey(keyIndex);
         }
-        return null;
+    
+        // Return the lookup response containing the searched nodes and the destination node
+        return new LookUpResponse(searchedNodes, destination.getId(), destination.getName());
     }
+    
 
 
 }
