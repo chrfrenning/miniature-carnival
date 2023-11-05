@@ -19,7 +19,7 @@ chmod +x simulator.jar
 # pandoc README.md -o Report.pdf
 docker run --rm --volume "$(pwd):/data" pandoc/latex README.md -o IN5020-Group7-Report.pdf
 rm group7-artifacts.zip
-zip -r group7-artifacts.zip *.java *.pdf simulator.jar
+zip -r group7-artifacts.zip *.java *.pdf simulator.jar ./outputs/*.out
 
 # Clean
 rm -rf ./bin
